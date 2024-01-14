@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageController!{% endblock %}
+
+{% block body %}
+    <div class="row mb-2">
+        {% for post in posts %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">{{ post.title }}</h3>
+                    <p class="card-text mb-auto">{{ post.description }}</p>
+                    <a href="{{ path('app_pricing') }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Продолжить
+                        <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src="{{ post.filename }}" data-src="https://via.placeholder.com/300" alt="Square placeholder img">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    <div class="navigation">
+        {{ knp_pagination_render(posts) }}
+    </div>
+{% endblock %}
